@@ -42,7 +42,7 @@ WheatShield is a deep learning–based web application designed to detect and cl
 
 **Database**
 
-* SQLite 
+* SQLite
 
 ---
 
@@ -66,25 +66,37 @@ WheatShield is a deep learning–based web application designed to detect and cl
 
 ### 🔐 User Registration
 
+![Register](assets/register.png)
+
 ---
 
 ### 🔐 User Login
+
+![Login](assets/login.png)
 
 ---
 
 ### 🏠 Dashboard
 
+![Dashboard](assets/dashboard.png)
+
 ---
 
 ### 📤 Prediction Result
+
+![Prediction](assets/prediction-result.png)
 
 ---
 
 ### 🔥 Grad-CAM Visualization
 
+![GradCAM](assets/gradcam-visualization.png)
+
 ---
 
 ### 📊 Analysis History
+
+![History](assets/history.png)
 
 ---
 
@@ -169,3 +181,4 @@ GitHub: https://github.com/Saishree-B
 WheatShield was developed to assist farmers and agricultural experts in **disease detection**, enabling faster intervention and improved crop health using AI.
 
 ---
+
