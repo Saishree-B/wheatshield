@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WheatShield — Dashboard</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="site-header">
+    <div class="brand-wrap">
+      <a href="dashboard.html"><img src="assets/logo.png" alt="WheatShield" class="logo" /></a>
+      <div class="brand-text">
+        <h1 class="brand">WheatShield</h1>
+        <p class="tag">Explainable wheat disease detection</p>
+      </div>
+    </div>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="upload.html">Upload</a></li>
+      <li><a href="history.html">History</a></li>
+      <li id="nav-login"><a href="login.html">Login</a></li>
+      <li id="nav-register"><a href="register.html">Register</a></li>
+      <li id="nav-logout"><button class="secondary" id="logout-btn-top">Logout</button></li>
+    </ul>
+  </nav>
+
+  <main class="container" style="grid-template-columns:1fr 320px;">
+    <section class="upload-area card" style="padding:24px;align-items:flex-start">
+      <h2>Welcome, <span id="user-name">Farmer</span></h2>
+      <p>Use the Upload page to analyze a wheat leaf image and get disease, confidence, severity and treatment advice.</p>
+      <div style="margin-top:18px;display:flex;gap:10px;align-items:center">
+        <a class="primary" href="upload.html">Upload Image</a>
+        <a class="secondary" href="history.html">History</a>
+      </div>
+      <div style="margin-top:18px;color:var(--muted)">
+        <p><strong>Quick tips:</strong></p>
+        <ul style="margin-left:18px;color:var(--muted)">
+          <li>Use clear leaf images with visible lesions</li>
+          <li>Prefer daylight images; avoid heavy blur</li>
+        </ul>
+      </div>
+    </section>
+
+    <aside class="results card">
+      <h3>Account</h3>
+      <p id="account-email">—</p>
+      <div style="margin-top:12px"><button id="logout" class="secondary">Logout</button></div>
+    </aside>
+  </main>
+
+  <!-- How It Works -->
+  <section id="how-it-works" class="how-section">
+    <div class="container" style="grid-template-columns:1fr;max-width:1100px;">
+      <h2 style="text-align:center;margin:20px 0 8px;font-size:2rem;color:#fff">How It Works</h2>
+      <p style="text-align:center;color:rgba(255,255,255,0.9);margin-bottom:26px;">From photo to diagnosis in seconds. Our streamlined process makes disease detection accessible to farmers everywhere.</p>
+      <div class="how-steps">
+        <div class="step">
+          <div class="step-badge">1</div>
+          <div class="step-icon">📸</div>
+          <h4>Capture</h4>
+          <p>Take a clear photo of the affected wheat leaf or crop section using your smartphone or camera.</p>
+        </div>
+        <div class="step">
+          <div class="step-badge">2</div>
+          <div class="step-icon">⚙️</div>
+          <h4>Analyze</h4>
+          <p>Our AI model processes the image using deep learning trained on thousands of disease samples.</p>
+        </div>
+        <div class="step">
+          <div class="step-badge">3</div>
+          <div class="step-icon">📋</div>
+          <h4>Diagnose</h4>
+          <p>Receive instant results with disease identification and confidence score.</p>
+        </div>
+        <div class="step">
+          <div class="step-badge">4</div>
+          <div class="step-icon">🌱</div>
+          <h4>Treat</h4>
+          <p>Follow personalized treatment recommendations to protect your crop and maximize yield.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer">WheatShield • Explainable AI for farmers</footer>
+
+  <script src="nav.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    requireAuth();
+    const user = JSON.parse(localStorage.getItem('wheatshield_user')) || {};
+    document.getElementById('user-name').textContent = user.name || user.email || 'Farmer';
+    document.getElementById('account-email').textContent = user.email || '';
+    document.getElementById('logout').addEventListener('click', ()=>{ logout(); });
+  </script>
+</body>
+</html>

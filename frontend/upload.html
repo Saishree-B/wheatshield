@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WheatShield — Upload</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="site-header">
+    <div class="brand-wrap">
+      <a href="dashboard.html">
+        <img src="assets/logo.png" alt="WheatShield" class="logo" />
+      </a>
+      <div class="brand-text">
+        <h1 class="brand">WheatShield</h1>
+        <p class="tag">Upload a leaf image for analysis</p>
+      </div>
+    </div>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="upload.html">Upload</a></li>
+      <li><a href="history.html">History</a></li>
+      <li id="nav-login"><a href="login.html">Login</a></li>
+      <li id="nav-register"><a href="register.html">Register</a></li>
+      <li id="nav-logout">
+        <button class="secondary" id="logout-btn-top">Logout</button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="container">
+
+    <!-- UPLOAD AREA -->
+    <section class="upload-area" id="drop-area">
+      <input type="file" id="file-input" accept="image/*" hidden />
+      <button id="pick-btn" class="primary">Choose Image</button>
+      <p>or drag &amp; drop an image here</p>
+
+      <!-- IMAGE PREVIEW + GRADCAM OVERLAY -->
+      <div class="preview-wrap">
+        <div class="preview">
+          <img id="preview" alt="preview image" />
+
+          <!-- Grad-CAM overlay (hidden by default) -->
+          <img
+            id="gradcam-img"
+            alt="Grad-CAM heatmap"
+            style="
+              display:none;
+              position:absolute;
+              left:0;
+              top:0;
+              width:100%;
+              height:100%;
+              object-fit:contain;
+              opacity:0.6;
+            "
+          />
+        </div>
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="controls">
+        <button id="api-btn" class="secondary">Predict</button>
+        <label class="toggle">
+          <input type="checkbox" id="show-gradcam" checked />
+          Show Grad-CAM
+        </label>
+      </div>
+
+      <!-- LOADER -->
+      <div id="loader" class="loader" aria-hidden="true">
+        <div class="spinner"></div>
+        <span>Processing...</span>
+      </div>
+    </section>
+
+    <!-- RESULTS (SINGLE PAGE) -->
+    <aside class="results">
+
+      <div class="card">
+        <h3>Disease</h3>
+        <p id="disease">—</p>
+      </div>
+
+      <div class="card">
+        <h3>Confidence</h3>
+        <p id="confidence">—</p>
+        <div class="confidence-bar">
+          <div class="confidence-fill" id="confidence-fill" style="width:0%"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>
+          Severity
+          <span class="info" title="Severity is estimated from the spread of disease regions in the image">ℹ️</span>
+        </h3>
+        <p id="severity">—</p>
+      </div>
+
+      <div class="card advice">
+        <h3>Recommendation</h3>
+        <p id="rec-text">—</p>
+        <p class="disclaimer">
+          This recommendation is advisory and does not replace expert consultation.
+        </p>
+      </div>
+
+    </aside>
+
+  </main>
+
+  <footer class="site-footer">Powered by WheatShield</footer>
+
+  <!-- SCRIPTS -->
+  <script src="nav.js"></script>
+  <script src="auth.js"></script>
+  <script src="upload.js"></script>
+
+</body>
+</html>

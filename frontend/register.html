@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WheatShield — Register</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="site-header">
+    <div class="brand-wrap">
+      <a href="dashboard.html"><img src="assets/logo.png" alt="WheatShield" class="logo" /></a>
+      <div class="brand-text">
+        <h1 class="brand">WheatShield</h1>
+        <p class="tag">Explainable wheat disease detection</p>
+      </div>
+    </div>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="upload.html">Upload</a></li>
+      <li><a href="history.html">History</a></li>
+      <li id="nav-login"><a href="login.html">Login</a></li>
+      <li id="nav-register"><a href="register.html">Register</a></li>
+      <li id="nav-logout"><button class="secondary" id="logout-btn-top">Logout</button></li>
+    </ul>
+  </nav>
+
+  <main class="container" style="grid-template-columns:1fr;max-width:480px;margin:60px auto;">
+    <section class="card" style="text-align:center">
+      <h2>Create account</h2>
+      <p class="tag">Set up your WheatShield account</p>
+      <form id="reg-form" style="margin-top:18px;display:flex;flex-direction:column;gap:10px;">
+        <input id="name" placeholder="Full name" required style="padding:10px;border-radius:8px;border:1px solid #e6f0ea" />
+        <input id="email" placeholder="Email" required style="padding:10px;border-radius:8px;border:1px solid #e6f0ea" />
+        <input id="password" type="password" placeholder="Password" required style="padding:10px;border-radius:8px;border:1px solid #e6f0ea" />
+        <button type="submit" class="primary">Create account</button>
+      </form>
+      <p style="margin-top:12px;color:var(--muted)">Already registered? <a href="login.html">Sign in</a></p>
+      <p id="msg" style="color:#0b8b2e;margin-top:8px"></p>
+    </section>
+  </main>
+
+  <script src="nav.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    document.getElementById('reg-form').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const r = registerUser({name,email,password});
+      if(r.success){ document.getElementById('msg').textContent = 'Account created. Redirecting to login...'; setTimeout(()=>location.href='login.html',900); }
+      else { document.getElementById('msg').textContent = r.message; }
+    });
+  </script>
+</body>
+</html>

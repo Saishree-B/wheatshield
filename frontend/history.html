@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WheatShield — History</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="site-header">
+    <div class="brand-wrap">
+      <a href="dashboard.html">
+        <img src="assets/logo.png" alt="WheatShield" class="logo" />
+      </a>
+      <div class="brand-text">
+        <h1 class="brand">WheatShield</h1>
+        <p class="tag">Prediction history</p>
+      </div>
+    </div>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="upload.html">Upload</a></li>
+      <li><a href="history.html">History</a></li>
+      <li id="nav-login"><a href="login.html">Login</a></li>
+      <li id="nav-register"><a href="register.html">Register</a></li>
+      <li id="nav-logout">
+        <button class="secondary" id="logout-btn-top">Logout</button>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="container" style="grid-template-columns:1fr 320px;">
+
+    <!-- HISTORY LIST -->
+    <section class="card" style="padding:18px;min-height:320px;">
+      <h2>Saved Analyses</h2>
+      <div id="history-list" style="margin-top:14px;display:flex;flex-direction:column;gap:12px;">
+        <!-- Items injected by history.js -->
+      </div>
+    </section>
+
+    <!-- SIDE PANEL -->
+    <aside class="results card">
+      <h3>Actions</h3>
+      <p style="color:var(--muted);font-size:0.95rem">
+        Your previous disease analyses are stored securely.
+      </p>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:8px;">
+        <a href="upload.html" class="primary">New Scan</a>
+        <button id="clear-history" class="secondary">Clear History</button>
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- SCRIPTS -->
+  <script src="nav.js"></script>
+  <script src="auth.js"></script>
+  <script src="history.js"></script>
+
+</body>
+</html>

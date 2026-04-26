@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WheatShield — Login</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <nav class="site-header">
+    <div class="brand-wrap">
+      <a href="dashboard.html"><img src="assets/logo.png" alt="WheatShield" class="logo" /></a>
+      <div class="brand-text">
+        <h1 class="brand">WheatShield</h1>
+        <p class="tag">Explainable wheat disease detection</p>
+      </div>
+    </div>
+    <button id="nav-toggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="dashboard.html">Dashboard</a></li>
+      <li><a href="upload.html">Upload</a></li>
+      <li><a href="history.html">History</a></li>
+      <li id="nav-login"><a href="login.html">Login</a></li>
+      <li id="nav-register"><a href="register.html">Register</a></li>
+      <li id="nav-logout"><button class="secondary" id="logout-btn-top">Logout</button></li>
+    </ul>
+  </nav>
+
+  <main class="container" style="grid-template-columns:1fr;max-width:480px;margin:60px auto;">
+    <section class="card" style="text-align:center">
+      <h2>Welcome back</h2>
+      <p class="tag">Sign in to access WheatShield</p>
+      <form id="login-form" style="margin-top:18px;display:flex;flex-direction:column;gap:10px;">
+        <input id="email" placeholder="Email or username" required style="padding:10px;border-radius:8px;border:1px solid #e6f0ea" />
+        <input id="password" type="password" placeholder="Password" required style="padding:10px;border-radius:8px;border:1px solid #e6f0ea" />
+        <button type="submit" class="primary">Sign in</button>
+      </form>
+      <p style="margin-top:12px;color:var(--muted)">New here? <a href="register.html">Create an account</a></p>
+      <p id="error" style="color:#b00020;margin-top:8px"></p>
+    </section>
+  </main>
+
+  <script src="nav.js"></script>
+  <script src="auth.js"></script>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+      const ok = loginUser(email, password);
+      if(ok.success){ window.location.href = 'dashboard.html'; }
+      else { document.getElementById('error').textContent = ok.message; }
+    });
+  </script>
+</body>
+</html>
